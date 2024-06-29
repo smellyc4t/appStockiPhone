@@ -1,0 +1,27 @@
+<!-- edit.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Produk</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('search') }}">Pencarian</a>
+        <a href="{{ url_for('add_stock') }}">Tambah Stock</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </header>
+    <h1>Edit Produk</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name(value=product.name) }}<br>
+        {{ form.capacity.label }} {{ form.capacity(value=product.capacity) }}<br>
+        {{ form.screen.label }} {{ form.screen(value=product.screen) }}<br>
+        {{ form.chip.label }} {{ form.chip(value=product.chip) }}<br>
+        {{ form.camera.label }} {{ form.camera(value=product.camera) }}<br>
+        <button type="submit">Simpan</button>
+    </form>
+</body>
+</html>

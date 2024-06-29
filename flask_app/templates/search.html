@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('add_stock') }}">Tambah Stock</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </header>
+    <h1>Search</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name() }}<br>
+        {{ form.capacity.label }} {{ form.capacity() }}<br>
+        {{ form.screen.label }} {{ form.screen() }}<br>
+        {{ form.chip.label }} {{ form.chip() }}<br>
+        {{ form.camera.label }} {{ form.camera() }}<br>
+        {{ form.submit() }}
+    </form>
+    {% if products %}
+    <h2>Results:</h2>
+    <table border="1">
+        <tr>
+            <th>Nama Produk</th>
+            <th>Kapasitas</th>
+            <th>Layar</th>
+            <th>Chip</th>
+            <th>Kamera</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.capacity }}</td>
+            <td>{{ product.screen }}</td>
+            <td>{{ product.chip }}</td>
+            <td>{{ product.camera }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>

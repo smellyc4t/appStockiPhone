@@ -1,0 +1,43 @@
+<!-- dashboard.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('search') }}">Pencarian</a>
+        <a href="{{ url_for('add_stock') }}">Tambah Stock</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </header>
+    <h1>Dashboard</h1>
+    <table border="1">
+        <tr>
+            <th>Nama Produk</th>
+            <th>Kapasitas</th>
+            <th>Layar</th>
+            <th>Chip</th>
+            <th>Kamera</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.capacity }}</td>
+            <td>{{ product.screen }}</td>
+            <td>{{ product.chip }}</td>
+            <td>{{ product.camera }}</td>
+            <td>
+                <a href="{{ url_for('edit', product_id=product.id) }}">Edit</a>
+            </td>
+            <td>
+                <a href="{{ url_for('delete', product_id=product.id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

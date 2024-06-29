@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tambah Stock</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('search') }}">Pencarian</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </header>
+    <h1>Tambah Stock</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name() }}<br>
+        {{ form.capacity.label }} {{ form.capacity() }}<br>
+        {{ form.screen.label }} {{ form.screen() }}<br>
+        {{ form.chip.label }} {{ form.chip() }}<br>
+        {{ form.camera.label }} {{ form.camera() }}<br>
+        {{ form.submit() }}
+    </form>
+</body>
+</html>
